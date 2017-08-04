@@ -2,6 +2,7 @@ package com.grandcircus.spring.controller;
 
 
 import com.test.models.RegisFormEntity;
+import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,10 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import java.util.*;
+
+
+import java.sql.Timestamp;
 
 /**
  * Created by trina2 on 8/4/17.
@@ -22,12 +27,9 @@ import org.hibernate.Transaction;
 @Controller
 public class HomeController {
 
+
     @RequestMapping("/")
     public ModelAndView helloWorld() {
-
-//        ArrayList<RegisFormEntity> items = Dao.listItems(); //created a method
-//
-//        System.out.println(items);
 
         return new ModelAndView("registration", "result", "");
     }
@@ -55,14 +57,24 @@ public class HomeController {
 
         RegisFormEntity newCust = new RegisFormEntity();
 
-        newCust.setFirstName("fName");
-        newCust.setLastName("lName");
-        newCust.setAddress1("add1");
-        newCust.setAddress2("add2");
-        newCust.setCity("city");
-        newCust.setState("state");
+        newCust.setFirstName(fName);
+        newCust.setLastName(lName);
+        newCust.setAddress1(add1);
+        newCust.setAddress2(add2);
+        newCust.setCity(city);
+        newCust.setState(state);
         newCust.setZipCode(zCode);
-        newCust.setCountry("country");
+        newCust.setCountry(country);
+
+        java.util.Date dt = new java.util.Date();
+
+        java.text.SimpleDateFormat sdf =
+                new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        String currentTime = sdf.format(dt);
+
+        newCust.setDate(Timestamp.valueOf(currentTime));
+
 
         session.save(newCust);
         tx.commit();
@@ -76,34 +88,30 @@ public class HomeController {
 
     }
 
-}
+    @RequestMapping(value="/adminreport")
+    public ModelAndView listItems () {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session session = sessionFact.openSession();
 
-//    public String addUser(RegisFormEntity registration, Model model) {
-//        model.addAttribute("fName", registration.getFirstName());
-//        model.addAttribute("lName", registration.getLastName());
-//        model.addAttribute("add1", registration.getAddress1());
-//        model.addAttribute("add2", registration.getAddress2());
-//        model.addAttribute("city", registration.getCity());
-//        model.addAttribute("state", registration.getState());
-//        model.addAttribute("zCode", registration.getZipCode());
-//        model.addAttribute("country", registration.getCountry());
-//
-//
-//    }
-//
-//    @RequestMapping("/adminreport")
-//    public ModelAndView showItems() {
-//        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-//        SessionFactory sessionFact = cfg.buildSessionFactory();
-//        Session selectCustomers = sessionFact.openSession();
-//        selectCustomers.beginTransaction();
-//        Criteria c = selectCustomers.createCriteria(RegisFormEntity.class);
-//
-//
-//        ArrayList<RegisFormEntity> itemsList = (ArrayList<RegisFormEntity>) c.list();
-//        return new ModelAndView("adminreport", "items", itemsList);
-//
-//    }
+        session.beginTransaction();
+
+        Criteria c = session.createCriteria(RegisFormEntity.class);
+
+        ArrayList<RegisFormEntity> userList = (ArrayList<RegisFormEntity>) c.addOrder(Order.desc("date")).list();
+
+        return new ModelAndView("adminreport", "list", userList);
+
+    }
+
+
+
+    }
+
+
+
+
+
 
 
 

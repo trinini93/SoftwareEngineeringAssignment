@@ -13,8 +13,7 @@
     <title>Please click to register</title>
 </head>
 <body>
-<!--ref to variable name/modelName in HomeController. will bring back "Hello World", our string-->
-<%--${hello}--%>
+
 
 
 <div class="container">
@@ -97,7 +96,7 @@
             }
 
 
-            return true; //return true if passwords match, characters more than 2
+            return true;
         }
     </script>
 </div>
