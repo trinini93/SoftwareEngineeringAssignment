@@ -22,7 +22,7 @@
 <div class="row">
 <div class="col-md-4">
 <h3>Please fill out the form below to register: </h3>
-<form:form name="summary" method="post" action="/addUser" onsubmit="return validateForm();">
+<form:form name="summary" method="post" action="/confirmation" onsubmit="return validateForm();">
 
     <%--<form:form name="summary" method="post" action="/addUser">--%>
     <table align=""> <!--centering table-->
