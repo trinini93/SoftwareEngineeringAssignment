@@ -13,6 +13,6 @@
 
 </head>
 <body>
-Thanks, this user has been added!
+Thanks, you are now registered!
 </body>
 </html>

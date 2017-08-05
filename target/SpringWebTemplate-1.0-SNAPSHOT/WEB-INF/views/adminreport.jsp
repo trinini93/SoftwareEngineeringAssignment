@@ -14,13 +14,11 @@
 </head>
 <body>
 
-
+<%--table below will display list of registered users in SQL in desc. order by date/time--%>
 <table border=1>
     <c:forEach var="myvar" items="${list}">
         <tr>
-            First Name
             <td> ${myvar.firstName}</td>
-            Last name
             <td> ${myvar.lastName}</td>
             <td> ${myvar.address1}</td>
             <td> ${myvar.address2}</td>
@@ -29,10 +27,6 @@
             <td> ${myvar.zipCode}</td>
             <td> ${myvar.country}</td>
             <td> ${myvar.date}</td>
-
-
-
-
         </tr>
     </c:forEach>
 </table>
