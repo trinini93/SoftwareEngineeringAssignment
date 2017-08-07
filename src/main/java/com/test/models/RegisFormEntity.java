@@ -3,6 +3,10 @@ package com.test.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+//test
+import java.io.Serializable;
+
+
 /**
  * Created by trina2 on 8/4/17.
  */

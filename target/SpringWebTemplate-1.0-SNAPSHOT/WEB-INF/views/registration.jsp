@@ -1,4 +1,7 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 
 <%--
   Created by IntelliJ IDEA.
@@ -11,6 +14,13 @@
 <html>
 <head>
     <title>Please click to register</title>
+    <style>
+        .error
+        {
+            color: #ff0000;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
@@ -24,11 +34,18 @@
 
             <form:form name="summary" method="post" action="/confirmation" onsubmit="return validateForm();">
 
+            <%--new stuff--%>
+               <form:errors path="*" cssClass="error" />
                 <%--<form:form name="summary" method="post" action="/addUser">--%>
             <table align=""> <!--centering table-->
                 <tr>
                     <td>First Name:</td>
-                    <td><input type="text" name="fName" required></td>
+
+                    <%--test to do spring validation/client side--%>
+                    <td><spring:message code="validName" text="First Name" /></td>
+                    <td><form:input path="firstName" /></td>
+                    <td><form:errors path="firstName" cssClass="error" /></td>
+                    <%--<td><input type="text" name="fName" required></td>--%>
                         <%--required will prompt user to fill something out (name in this case) that they might've missed--%>
                 </tr>
                 <tr>
@@ -56,9 +73,10 @@
                 <td><input type="text" name="zCode" required></td>
                 </tr>
                 <tr>
+                    <%--US only requirement--%>
                     <td>Country:</td>
                         <td><input type="radio" name="country" value="United States" checked>United States</td>
-                    <%--<td><input type="text" name="country" value="US" required></td>--%>
+
                 </tr>
             </table>
         </div>
@@ -75,24 +93,18 @@
 
 
         <script>
+//            client side validation requirement
             function validateForm() {
 
-//            var fName = document.forms ["summary"] ["fName"].value;
-//            var lName = document.forms ["summary"] ["lName"].value;
-//            var add1 = document.forms ["summary"] ["add1"].value;
-//            var add2 = document.forms ["summary"] ["add2"].value;
-//            var city = document.forms ["summary"] ["city"].value;
-//            var state = document.forms ["summary"] ["state"].value;
                 var zCode = document.forms ["summary"] ["zCode"].value;
-//                var country = document.forms ["summary"] ["country"].value;
 
-//                validation for US zcode only
+
+//                5 or 9 digit zip code requirement
                 if (zCode.length < 5 || zCode.length > 9 || zCode.length === 6 || zCode.length === 7 || zCode.length === 8 ) {
                     alert("Please enter a US Zip Code (5 or 9 digits only)");
                     return false;
                 }
                 return true;
-
 
             }
         </script>
