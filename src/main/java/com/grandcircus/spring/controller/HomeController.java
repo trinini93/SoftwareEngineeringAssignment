@@ -1,6 +1,5 @@
 package com.grandcircus.spring.controller;
 
-
 import com.test.models.RegisFormEntity;
 import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Controller;
@@ -13,20 +12,16 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+
 import java.util.*;
-
-
-
 import java.sql.Timestamp;
 
 /**
- * Created by trina2 on 8/4/17.
+ * Created by Programmer: Trina Chowdhury on 8/4/17.
  */
-
 
 @Controller
 public class HomeController {
-
 
     @RequestMapping("/")
     public ModelAndView helloWorld() {
@@ -41,7 +36,6 @@ public class HomeController {
 
     @RequestMapping(value = "/confirmation", method = RequestMethod.POST)
 
-//    public ModelAndView addUser(@RequestParam("fName") String fName,
     public ModelAndView addUser(@RequestParam("fName") String fName,
                                 @RequestParam("lName") String lName,
                                 @RequestParam("add1") String add1,
@@ -51,23 +45,25 @@ public class HomeController {
                                 @RequestParam("zCode") int zCode,
                                 @RequestParam("country") String country) {
 
+        //starting sql connection
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
         Session session = sessionFact.openSession();
 
         Transaction tx = session.beginTransaction();
 
-        RegisFormEntity newCust = new RegisFormEntity();
+        RegisFormEntity newUser = new RegisFormEntity();
 
-        newCust.setFirstName(fName);
-        newCust.setLastName(lName);
-        newCust.setAddress1(add1);
-        newCust.setAddress2(add2);
-        newCust.setCity(city);
-        newCust.setState(state);
-        newCust.setZipCode(zCode);
-        newCust.setCountry(country);
+        newUser.setFirstName(fName);
+        newUser.setLastName(lName);
+        newUser.setAddress1(add1);
+        newUser.setAddress2(add2);
+        newUser.setCity(city);
+        newUser.setState(state);
+        newUser.setZipCode(zCode);
+        newUser.setCountry(country);
 
+        //requirement for date in desc. order
         java.util.Date dt = new java.util.Date();
 
         java.text.SimpleDateFormat sdf =
@@ -75,19 +71,18 @@ public class HomeController {
 
         String currentTime = sdf.format(dt);
 
-        newCust.setDate(Timestamp.valueOf(currentTime));
+        newUser.setDate(Timestamp.valueOf(currentTime));
 
-
-        session.save(newCust);
+//saving new user info to sql
+        session.save(newUser);
         tx.commit();
         session.close();
 
-
-        return new ModelAndView("confirmation", "user", newCust);
-
+        return new ModelAndView("confirmation", "user", newUser);
 
     }
 
+    //this will show whats saved sql db/requirement for admin report
     @RequestMapping(value = "/adminreport")
     public ModelAndView listItems() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
@@ -102,6 +97,12 @@ public class HomeController {
 
         return new ModelAndView("adminreport", "list", userList);
 
+    }
+
+    @RequestMapping("/programmerinfo")
+    public ModelAndView programmerinfo() {
+
+        return new ModelAndView("programmerinfo", "programmerinfo", "");
     }
 
 }

@@ -3,19 +3,14 @@ package com.test.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-//below is a test
-import org.hibernate.validator.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 /**
- * Created by trina2 on 8/4/17.
+ * Created by Programmer: Trina Chowdhury on 8/4/17.
  */
 @Entity
 @Table(name = "RegisForm", schema = "HelloWorld", catalog = "")
 public class RegisFormEntity {
     private int idRegisForm;
-  //this is a test with @Null
-    @NotNull(message = "name cannot be null")
     private String firstName;
     private String lastName;
     private String address1;

@@ -5,7 +5,7 @@
 
 <%--
   Created by IntelliJ IDEA.
-  User: trina2
+  Programmer: Trina Chowdhury
   Date: 5/8/17
   Time: 1:10 PM
   To change this template use File | Settings | File Templates.
@@ -15,57 +15,25 @@
 <head>
     <title>Please click to register</title>
 
-    <%--tying something--%>
-
-    <%--<style>--%>
-        <%--.error {--%>
-            <%--color: #ff0000;--%>
-        <%--}--%>
-
-        <%--.errorblock {--%>
-            <%--color: #000;--%>
-            <%--background-color: #ffEEEE;--%>
-            <%--border: 3px solid #ff0000;--%>
-            <%--padding: 8px;--%>
-            <%--margin: 16px;--%>
-        <%--}--%>
-    <%--</style>--%>
 </head>
 <body>
 
-
+<center>
 <div class="container">
-    <!-- Example row of columns -->
     <div class="row">
         <div class="col-md-4">
             <h3> Please fill out the form below to register: </h3>
-            <h4> *DISCLAIMER* You must live in the United States to register.</h4>
-
-
-            <%--&lt;%&ndash;trying somthing&ndash;%&gt;--%>
-<%--<form:form method="POST" commandName="customer" action="customer/signup">--%>
-    <%--<form:errors path="*" cssClass="errorblock" element="div" />--%>
-    <%--<table>--%>
-    <%--<tr>--%>
-    <%--<td>Customer Name :</td>--%>
-    <%--<td><form:input path="firstName" /></td>--%>
-    <%--<td><form:errors path="firstName" cssClass="error" /></td>--%>
-    <%--</tr>--%>
-
-    <%--</table>--%>
-<%--</form:form>--%>
 
             <form:form name="summary" method="post" action="/confirmation" onsubmit="return validateForm();">
-
 
             <table align=""> <!--centering table-->
 
                 <tr>
-                   <td>First Name:</td>
+                    <td>First Name:</td>
 
-                    <td><input type="text" name="fName" ></td>
+                    <td><input type="text" name="fName"></td>
 
-              </tr>
+                </tr>
                 <tr>
                     <td>Last Name:</td>
                     <td><input type="text" name="lName" required></td>
@@ -92,14 +60,13 @@
                 </tr>
                 <tr>
                         <%--US only requirement--%>
-                    <td>Country:</td>
+                    <td>Country (US only):</td>
                     <td><input type="radio" name="country" value="United States" checked>United States</td>
 
                 </tr>
             </table>
         </div>
-
-        <table> <!--reopening table tag for submit button-->
+        <table>
             <tr>
 
                 <td colspan="2">
@@ -109,13 +76,17 @@
         </table>
         </form:form>
 
+        <p>Other Options</p>
+
+        <a href ="/adminreport">View Admin Report</a>
+        ||
+        <a href ="/programmerinfo">Programmer Info</a>
 
         <script>
-            //            client side validation requirement
+            // client side validation requirement
             function validateForm() {
 
                 var zCode = document.forms ["summary"] ["zCode"].value;
-
 
 //                5 or 9 digit zip code requirement
                 if (zCode.length < 5 || zCode.length > 9 || zCode.length === 6 || zCode.length === 7 || zCode.length === 8) {
@@ -128,5 +99,6 @@
         </script>
     </div>
 </div>
+</center>
 </body>
 </html>

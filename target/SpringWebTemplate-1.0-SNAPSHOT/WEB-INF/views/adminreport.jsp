@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
-  User: trina2
+  Programmer: Trina Chowdhury
   Date: 8/4/17
   Time: 11:49 AM
   To change this template use File | Settings | File Templates.
@@ -13,9 +13,10 @@
     <title>Admin Report</title>
 </head>
 <body>
-
+<center>
 <a href ="/">Register Someone Else</a>
 <br>
+    <a href ="/programmerinfo">Programmer Info</a>
 
 <%--table below will display list of registered users in SQL in desc. order by date/time--%>
 <table border=1>
@@ -33,6 +34,6 @@
         </tr>
     </c:forEach>
 </table>
-
+</center>
 </body>
 </html>
