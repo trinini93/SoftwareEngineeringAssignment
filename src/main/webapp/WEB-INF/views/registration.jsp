@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
@@ -14,13 +14,22 @@
 <html>
 <head>
     <title>Please click to register</title>
-    <style>
-        .error
-        {
-            color: #ff0000;
-            font-weight: bold;
-        }
-    </style>
+
+    <%--tying something--%>
+
+    <%--<style>--%>
+        <%--.error {--%>
+            <%--color: #ff0000;--%>
+        <%--}--%>
+
+        <%--.errorblock {--%>
+            <%--color: #000;--%>
+            <%--background-color: #ffEEEE;--%>
+            <%--border: 3px solid #ff0000;--%>
+            <%--padding: 8px;--%>
+            <%--margin: 16px;--%>
+        <%--}--%>
+    <%--</style>--%>
 </head>
 <body>
 
@@ -32,22 +41,31 @@
             <h3> Please fill out the form below to register: </h3>
             <h4> *DISCLAIMER* You must live in the United States to register.</h4>
 
+
+            <%--&lt;%&ndash;trying somthing&ndash;%&gt;--%>
+<%--<form:form method="POST" commandName="customer" action="customer/signup">--%>
+    <%--<form:errors path="*" cssClass="errorblock" element="div" />--%>
+    <%--<table>--%>
+    <%--<tr>--%>
+    <%--<td>Customer Name :</td>--%>
+    <%--<td><form:input path="firstName" /></td>--%>
+    <%--<td><form:errors path="firstName" cssClass="error" /></td>--%>
+    <%--</tr>--%>
+
+    <%--</table>--%>
+<%--</form:form>--%>
+
             <form:form name="summary" method="post" action="/confirmation" onsubmit="return validateForm();">
 
-            <%--new stuff--%>
-               <form:errors path="*" cssClass="error" />
-                <%--<form:form name="summary" method="post" action="/addUser">--%>
-            <table align=""> <!--centering table-->
-                <tr>
-                    <td>First Name:</td>
 
-                    <%--test to do spring validation/client side--%>
-                    <td><spring:message code="validName" text="First Name" /></td>
-                    <td><form:input path="firstName" /></td>
-                    <td><form:errors path="firstName" cssClass="error" /></td>
-                    <%--<td><input type="text" name="fName" required></td>--%>
-                        <%--required will prompt user to fill something out (name in this case) that they might've missed--%>
-                </tr>
+            <table align=""> <!--centering table-->
+
+                <tr>
+                   <td>First Name:</td>
+
+                    <td><input type="text" name="fName" ></td>
+
+              </tr>
                 <tr>
                     <td>Last Name:</td>
                     <td><input type="text" name="lName" required></td>
@@ -73,9 +91,9 @@
                 <td><input type="text" name="zCode" required></td>
                 </tr>
                 <tr>
-                    <%--US only requirement--%>
+                        <%--US only requirement--%>
                     <td>Country:</td>
-                        <td><input type="radio" name="country" value="United States" checked>United States</td>
+                    <td><input type="radio" name="country" value="United States" checked>United States</td>
 
                 </tr>
             </table>
@@ -93,14 +111,14 @@
 
 
         <script>
-//            client side validation requirement
+            //            client side validation requirement
             function validateForm() {
 
                 var zCode = document.forms ["summary"] ["zCode"].value;
 
 
 //                5 or 9 digit zip code requirement
-                if (zCode.length < 5 || zCode.length > 9 || zCode.length === 6 || zCode.length === 7 || zCode.length === 8 ) {
+                if (zCode.length < 5 || zCode.length > 9 || zCode.length === 6 || zCode.length === 7 || zCode.length === 8) {
                     alert("Please enter a US Zip Code (5 or 9 digits only)");
                     return false;
                 }

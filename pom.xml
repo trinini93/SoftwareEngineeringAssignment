@@ -8,9 +8,24 @@
     <artifactId>SoftwareEngineeringAssignment</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!--new-->
+
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+
+
     <!--this is where it starts, we imported changes to get rid of red stuff-->
     <packaging>war</packaging>
     <dependencies>
+
+
+
+
+
+<!--spring dependencies-->
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -66,10 +81,20 @@
             <artifactId>javassist</artifactId>
             <version>3.12.1.GA</version>
         </dependency>
+
+    <!--hibernate dependencies-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>5.2.10.Final</version>
+        </dependency>
+
+        <!--heres a new one-->
+
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.1.0.Final</version>
         </dependency>
 
         <dependency>
@@ -78,27 +103,14 @@
             <version>5.2.4.Final</version>
         </dependency>
 
-
-        <!--new dependencies from tutorial-->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-        </dependency>
     </dependencies>
 
-    <build>
-        <finalName>SoftwareEngineeringAssignment</finalName>
-    </build>
+    <!--<build>-->
+        <!--<finalName>SoftwareEngineeringAssignment</finalName>-->
+    <!--</build>-->
 
-    <properties>
-        <spring.version>3.2.9.RELEASE</spring.version>
-    </properties>
+    <!--<properties>-->
+        <!--<spring.version>3.2.9.RELEASE</spring.version>-->
+    <!--</properties>-->
 
 </project>

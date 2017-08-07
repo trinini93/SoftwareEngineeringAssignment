@@ -13,6 +13,13 @@
 
 </head>
 <body>
-Thanks, you are now registered!
+Thanks, your registration is complete!
+<br>
+<a href ="/">Register Someone Else</a>
+<br>
+<a href ="/adminreport">View Admin Report</a>
+
+
+
 </body>
 </html>

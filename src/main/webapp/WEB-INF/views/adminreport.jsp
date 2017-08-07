@@ -14,6 +14,9 @@
 </head>
 <body>
 
+<a href ="/">Register Someone Else</a>
+<br>
+
 <%--table below will display list of registered users in SQL in desc. order by date/time--%>
 <table border=1>
     <c:forEach var="myvar" items="${list}">

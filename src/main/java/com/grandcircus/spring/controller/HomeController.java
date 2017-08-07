@@ -4,7 +4,6 @@ package com.grandcircus.spring.controller;
 import com.test.models.RegisFormEntity;
 import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,9 +16,6 @@ import org.hibernate.Transaction;
 import java.util.*;
 
 
-
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 import java.sql.Timestamp;
 
@@ -44,8 +40,10 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/confirmation", method = RequestMethod.POST)
-//    TEST public ModelAndView addUser(@RequestParam("fName") String fName,
-    public ModelAndView addUser(@RequestParam("lName") String lName,
+
+//    public ModelAndView addUser(@RequestParam("fName") String fName,
+    public ModelAndView addUser(@RequestParam("fName") String fName,
+                                @RequestParam("lName") String lName,
                                 @RequestParam("add1") String add1,
                                 @RequestParam("add2") String add2,
                                 @RequestParam("city") String city,
@@ -61,7 +59,7 @@ public class HomeController {
 
         RegisFormEntity newCust = new RegisFormEntity();
 
-//        newCust.setFirstName(fName);
+        newCust.setFirstName(fName);
         newCust.setLastName(lName);
         newCust.setAddress1(add1);
         newCust.setAddress2(add2);
