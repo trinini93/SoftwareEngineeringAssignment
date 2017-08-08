@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3306/HelloWorld</property>
+        <property name="connection.url">jdbc:mysql://helloworlddb.cpasologatvk.us-east-2.rds.amazonaws.com:3306/HelloWorld</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -17,10 +17,6 @@
         <mapping class="com.test.models.RegisFormEntity"/>
 
 
-        <!-- <property name="connection.username"/> -->
-        <!-- <property name="connection.password"/> -->
 
-        <!-- DB schema will be updated if needed -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
     </session-factory>
 </hibernate-configuration>
