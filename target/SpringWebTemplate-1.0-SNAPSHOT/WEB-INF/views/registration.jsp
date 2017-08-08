@@ -31,7 +31,7 @@
                 <tr>
                     <td>First Name:</td>
 
-                    <td><input type="text" name="fName"></td>
+                    <td><input type="text" name="fName" required></td>
 
                 </tr>
                 <tr>
